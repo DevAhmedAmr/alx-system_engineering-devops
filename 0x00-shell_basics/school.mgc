@@ -1,2 +1,12 @@
 #!/bin/bash
-grep -r 'SCHOOL ' .
+
+# Create the magic file
+echo "0 string SCHOOL School data" > school.mgc
+
+# Compile the magic file
+file -C -m school.mgc
+
+# Test the magic file
+touch school.dat
+echo "SCHOOL" >> school.dat
+file -m school.mgc school.dat
