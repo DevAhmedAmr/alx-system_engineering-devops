@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1ap | sed '$s/.$/\n/' | sed 's/[^[:alnum:]\.\/]/,/g' | sed -E 's/^(.*\/)?(\.|\.\.)$/\2,\1/g' | sed -E 's/^([[:digit:]])/0\1/' | sort | sed -E 's/^(.*),$|^(.*)$/\1\2
+ls -1 | tr '\n' ',' | sed 's/,/\//g' | sort -n | sed '1i.,..' | tr '\n' ','
