@@ -1,2 +1,2 @@
 #!/bin/bash
-(ls -a1 | grep -E '^[0-9a-zA-Z]' | sort -V && ls -d1 .*/ | sort -V) | grep -v '[/=:|]$' | paste -sd,
+ls -mpa
