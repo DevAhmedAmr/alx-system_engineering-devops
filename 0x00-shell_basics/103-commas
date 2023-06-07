@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 | tr '\n' ',' | sed 's/,/\//g' | sort -n | sed '1i.,..' | tr '\n' ','
+(ls -a1 | grep -E '^[0-9a-zA-Z]' | sort -V && ls -d1 .*/ | sort -V) | awk '{if (NR!=1) printf ", "; printf $0} END {print ""}'
