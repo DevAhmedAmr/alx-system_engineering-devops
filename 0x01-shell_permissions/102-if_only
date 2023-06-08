@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo chown hello betty --from=guillaume
+sudo chown hello betty --from=root guillaume
