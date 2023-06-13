@@ -1,5 +1,2 @@
 #!/bin/bash
-echo "ahmed"
-echo $GGEZ
-echo $gc
-echo $quote
+tr 'A-Za-z' 'N-ZA-Mn-za-m'
