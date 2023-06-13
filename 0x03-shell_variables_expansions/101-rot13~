@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "ahmed"
+echo $GGEZ
+echo $gc
