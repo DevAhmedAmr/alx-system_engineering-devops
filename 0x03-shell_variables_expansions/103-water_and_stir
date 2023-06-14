@@ -1,0 +1,2 @@
+#!/bin/bash
+bestchol=$((5#$WATER+5#$STIR)) | echo "obase=8; $bestchol" | bc
