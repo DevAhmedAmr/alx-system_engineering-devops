@@ -1,2 +1,2 @@
 #!/bin/bash
-bestchol=$((5#$WATER+5#$STIR)) && printf '%o\n' "$bestchol"
+bestchol=$((5#$WATER+5#$STIR)) || printf '%o\n' "$bestchol"
