@@ -1,1 +1,3 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
+# shellcheck disable=SC2009
+pgrep -l bash
