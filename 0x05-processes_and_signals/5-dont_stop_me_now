@@ -1,11 +1,3 @@
 #!/usr/bin/env bash
 
 kill "$(ps -x | pgrep -f beyond)"
-# bash_pids=$(pidof bash)
-
-# # Kill all of the bash processes.
-# for bash_pid in $bash_pids; do
-# 	if [ "$bash_pid" != "$$" ]; then
-# 		kill -9 $bash_pid
-# 	fi
-# done
