@@ -2,7 +2,7 @@
 #Bash script that:
 sudo bash -c "echo $$ > /var/run/myscript.pid"
 trap "sudo rm -f /var/run/myscript.pid; exit" SIGQUIT
-trap 'echo "I hate the kill command"' SIGTERM
+trap 'sudo echo "I hate the kill command; exit"' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
 
 while ((1)); do
