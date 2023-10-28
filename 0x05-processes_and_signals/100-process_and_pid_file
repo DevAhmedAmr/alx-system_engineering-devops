@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-#asd
-echo $$ >/var/run/myscript.pid # Use > to write the PID to the file
+#Bash script that:
+echo $$ >/var/run/myscript.pid
 
+trap "sudo rm -f /var/run/myscript.pid" SIGQUIT
 trap 'echo "I hate the kill command"' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
 
