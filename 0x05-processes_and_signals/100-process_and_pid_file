@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-mkdir -p /var/run              # Use -p to create parent directories if they don't exist
+#asd
 echo $$ >/var/run/myscript.pid # Use > to write the PID to the file
 
 trap 'echo "I hate the kill command"' SIGTERM
@@ -9,5 +9,3 @@ while ((1)); do
 	echo "To infinity and beyond"
 	sleep 2
 done
-
-rm -r "/var"
