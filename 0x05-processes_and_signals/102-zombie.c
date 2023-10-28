@@ -6,6 +6,21 @@
  *
  * Return: 0 on success
  */
+/**
+ * infinite_while - a function that creates an infinite loop to make
+ * a program stall
+ *
+ * Return: 0 (Always for success)
+ */
+int infinite_while(void)
+{
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
+}
+
 int main(void)
 {
 	int i = 0;
@@ -21,16 +36,8 @@ int main(void)
 
 			exit(0);
 		}
-		else if (pid > 0)
-		{
-			/*parent proc*/
-
-			sleep(1);
-		}
-		else
-		{
-			fprintf(stderr, "failed");
-		}
 	}
+	infinite_while();
+
 	return (0);
 }
