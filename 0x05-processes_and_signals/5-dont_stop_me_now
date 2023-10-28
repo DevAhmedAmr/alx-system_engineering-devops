@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #a
-kill "$(ps -x | pgrep -f beyond)"
+bash_pid=pgrep bash
+kill -9 $bash_pid
