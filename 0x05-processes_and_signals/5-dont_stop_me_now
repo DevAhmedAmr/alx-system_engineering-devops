@@ -1,1 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
+# shellcheck disable=SC2009
+bash_pid=pgrep bash
+kill -9 bash_pid
