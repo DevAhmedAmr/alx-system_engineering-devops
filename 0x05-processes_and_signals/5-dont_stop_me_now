@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-bash_pid=$(pgrep bash)
-kill -9 $bash_pid
-
+kill "$(ps -x | pgrep -f beyond)"
 # bash_pids=$(pidof bash)
 
 # # Kill all of the bash processes.
