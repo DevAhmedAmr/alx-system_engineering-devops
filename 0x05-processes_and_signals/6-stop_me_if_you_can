@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 #Bash script that stops 4-to_infinity_and_beyond process.
 #without kill or killall
-pkill -f beyond
+pkill -f "beyond"
