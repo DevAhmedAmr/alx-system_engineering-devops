@@ -32,4 +32,5 @@ int main(void)
 			fprintf(stderr, "failed");
 		}
 	}
+	return (0);
 }
