@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 #command
 
-sudo apt update
-sudo apt-get -y install nginx
+# sudo apt update
+# sudo apt-get -y install nginx
 sudo mkdir -p /var/www/InnVista.tech
 sudo chmod -R 755 /var/www/InnVista.tech
 sudo touch index.html
-echo "hello world!" >/var/www/InnVista.tech/index.html
-touch /etc/nginx/sites-enabled/InnVista_config
+sudo echo "hello world!" >/var/www/InnVista.tech/index.html
+sudo touch /etc/nginx/sites-enabled/InnVista_config
 
-echo "server {
+sudo echo "server {
         listen 80;
         listen [::]:80;
 
         root /var/www/InnVista.tech;
         index index.html;
 
-        414302-web-01 www.InnVista.tech;
+        server_name InnVista.tech www.InnVista.tech;
 
         location / {
                 try_files $uri $uri/ =404;
