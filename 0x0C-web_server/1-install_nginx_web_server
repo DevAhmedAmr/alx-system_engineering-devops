@@ -1,37 +1,25 @@
 #!/usr/bin/env bash
-# Update package lists
+#command
+
 sudo apt update
-
-# Install Nginx
 sudo apt-get -y install nginx
-
-# Create directories and set permissions
-sudo mkdir -p /var/www/InnVista.tech/html
+sudo mkdir -p /var/www/InnVista.tech
 sudo chmod -R 755 /var/www/InnVista.tech
+sudo touch index.html
+echo "hello world!" >/var/www/InnVista.tech/index.html
+touch /etc/nginx/sites-enabled/InnVista_config
 
-# Create a simple HTML file
-echo "hello world!" >/var/www/InnVista.tech/html/index.html
+echo "server {
+        listen 80;
+        listen [::]:80;
 
-# Create an Nginx server block configuration file
-sudo bash -c 'cat > /etc/nginx/sites-available/InnVista.tech <<EOF
-server {
-    listen 80;
-    listen [::]:80;
+        root /var/www/InnVista.tech;
+        index index.html;
 
-    server_name InnVista.tech www.InnVista.tech;
+        414302-web-01 www.InnVista.tech;
 
-    root /var/www/InnVista.tech/html;
-    index index.html index.htm index.nginx-debian.html;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-}
-EOF'
-
-# Create a symbolic link to enable the site
-sudo ln -s /etc/nginx/sites-available/InnVista.tech /etc/nginx/sites-enabled/
-
-# Test Nginx configuration and restart
-sudo nginx -t
-sudo systemctl restart nginx
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}" >/etc/nginx/sites-enabled/InnVista_config
+sudo service nginx restart
