@@ -1,5 +1,4 @@
 # A resource declaration
-# A resource declaration
 file { 'school':
   ensure  => 'present',
   path    => '/tmp/school',
