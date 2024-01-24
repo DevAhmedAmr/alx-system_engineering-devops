@@ -1,1 +1,20 @@
 #!/usr/bin/env bash
+sudo apt update
+sudo apt-get -y install nginx
+sudo mkdir -p /var/www/InnVista.tech/html
+sudo chmod -R 755 /var/www/your_domain
+echo "hello world!" >/var/www/InnVista.tech/html
+mkdir /etc/nginx/sites-available/InnVista.tech
+echo "server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/InnVista.tech/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        414302-web-01 InnVista.tech www.InnVista.tech;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}" >/etc/nginx/sites-available/InnVista.tech
