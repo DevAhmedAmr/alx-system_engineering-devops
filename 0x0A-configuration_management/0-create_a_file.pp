@@ -1,6 +1,6 @@
 # A resource declaration
-file {'/tmp/school':
-ensure => 'file',
+file {'school':
+ensure => 'present',
 path => '/tmp/school,
 content => "I love Puppet",
 owner => 'www-data',
