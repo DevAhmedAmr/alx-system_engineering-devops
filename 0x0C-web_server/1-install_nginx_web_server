@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #command
 
-# sudo apt update
-# sudo apt-get -y install nginx
+sudo apt update
+sudo apt-get -y install nginx
 sudo mkdir -p /var/www/InnVista.tech
 sudo chmod -R 755 /var/www/InnVista.tech
 sudo touch index.html
