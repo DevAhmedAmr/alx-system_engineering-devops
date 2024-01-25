@@ -8,18 +8,12 @@ sudo touch /var/www/html/index.html
 sudo chmod -R 755 /var/www/html/index.html
 sudo echo "hello world!" >/var/www/html/index.html
 sudo touch /etc/nginx/sites-enabled/default
+sudo ufw allow 'Nginx HTTP'
+# sudo echo "server {
+#         listen 80;
+#         listen [::]:80;
 
-sudo echo "server {
-        listen 80;
-        listen [::]:80;
+#         root  /var/www/html;
 
-        root  /var/www/html;
-        index index.html;
-
-        server_name web-01;
-
-        location / {
-                try_files $uri $uri/ =404;
-        }
-}" >/etc/nginx/sites-enabled/default
-sudo service nginx restart
+# }" >/etc/nginx/sites-enabled/default
+# sudo service nginx restart
