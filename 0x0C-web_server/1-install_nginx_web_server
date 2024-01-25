@@ -1,33 +1,25 @@
 #!/usr/bin/env bash
-# Update package lists
+#command
+
 sudo apt update
-
-# Install Nginx
 sudo apt-get -y install nginx
+sudo mkdir -p /var/www/html
+sudo touch /var/www/html/index.html
+sudo chmod -R 755 /var/www/html/index.html
+sudo echo "hello world!" >/var/www/html/index.html
+sudo touch /etc/nginx/sites-enabled/default
 
-# Create directories and set permissions
-sudo mkdir -p /var/www/InnVista.tech
-sudo chmod -R 755 /var/www/InnVista.tech
+sudo echo "server {
+        listen 80;
+        listen [::]:80;
 
-# Create a simple HTML file
-echo "Hello World!" | sudo tee /var/www/InnVista.tech/index.html
+        root  /var/www/html;
+        index index.html;
 
-# Create an Nginx server block configuration file
-sudo bash -c 'cat > /etc/nginx/sites-enabled/InnVista_config <<EOF
-server {
-    listen 80;
-    listen [::]:80;
+        server_name web-01;
 
-    root /var/www/InnVista.tech;
-    index index.html;
-
-    server_name InnVista.tech www.InnVista.tech;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-}
-EOF'
-
-# Restart Nginx without using systemctl
-sudo /etc/init.d/nginx restart
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}" >/etc/nginx/sites-enabled/default
+sudo service nginx restart
