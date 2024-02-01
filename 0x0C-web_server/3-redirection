@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-#"script that add configration to redirect to innvista"
-new_string="location /redirect_me {
-    return 301 \$scheme://innvista.tech;
-}"
+# script that adds configuration to redirect to innvista
 
-sed -i 's/# Add index.php to the list if you are using PHP/'"$new_string"'/' default
+new_string="location \/redirect_me {\n    return 301 \$scheme:\/\/innvista.tech;\n}"
+
+sed -i "s|# Add index.php to the list if you are using PHP|${new_string}|" default
