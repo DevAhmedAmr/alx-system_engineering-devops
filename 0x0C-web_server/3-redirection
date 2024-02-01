@@ -1,1 +1,7 @@
 #!/usr/bin/env bash
+
+new_string="location /redirect_me {
+    return 301 \$scheme://innvista.tech;
+}"
+
+sed -i 's/# Add index.php to the list if you are using PHP/'"$new_string"'/' default
