@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#"script that add configration to redirect to innvista"
 new_string="location /redirect_me {
     return 301 \$scheme://innvista.tech;
 }"
