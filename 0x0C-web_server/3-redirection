@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # script that adds configuration to redirect to innvista
 
+sudo apt update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo echo "Hello World!" >/var/www/html/index.nginx-debian.html
+sudo service nginx restart
+
 new_string="location \/redirect_me {\n    return 301 \$scheme:\/\/innvista.tech;\n}"
 
 sed -i "s|# Add index.php to the list if you are using PHP|${new_string}|" default
