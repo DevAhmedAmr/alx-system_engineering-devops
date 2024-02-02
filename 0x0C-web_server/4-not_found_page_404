@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+#SCRIPT
 echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
