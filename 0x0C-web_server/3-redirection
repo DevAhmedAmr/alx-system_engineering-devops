@@ -7,6 +7,13 @@ sudo ufw allow 'Nginx HTTP'
 echo "Hello World!" /var/www/html/index.nginx-debian.html >sudo
 sudo service nginx restart
 
-new_string="location \/redirect_me {\n    return 301 \$scheme:\/\/innvista.tech;\n}"
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+    root   /usr/share/nginx/html;
+    index  index.html index.htm;
 
-sed -i "s|# Add index.php to the list if you are using PHP|${new_string}|" default
+    location /redirect_me {
+        return 301 http://google.com/;
+    }
+}" >default
