@@ -3,7 +3,7 @@
 # shellcheck disable=SC2154
 
 # Capture the hostname
-#hostname=$(hostname)
+hostname=$(hostname)
 
 # Install Nginx
 sudo apt update
