@@ -16,4 +16,4 @@ printf %s "server {
     location /redirect_me {
         return 301 http://google.com/;
     }
-}" >default
+}" >/etc/nginx/sites-available/default
