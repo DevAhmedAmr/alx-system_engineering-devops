@@ -13,7 +13,6 @@ frontend haproxynode
 backend backendnodes
     balance roundrobin
 	mode http
-    option forwardfor
     server 414302-web-01 100.25.169.190:80 check
     server 414302-web-02 34.239.255.200:80 check" >>/etc/haproxy/haproxy.cfg
 sudo service haproxy restart
