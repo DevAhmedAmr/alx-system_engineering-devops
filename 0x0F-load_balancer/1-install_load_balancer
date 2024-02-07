@@ -1,2 +1,18 @@
 #!/usr/bin/env bash
 #test commot
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install haproxy
+
+printf %d "frontend haproxynode
+    bind *:80
+    mode http
+    default_backend backendnodes
+
+backend backendnodes
+    balance roundrobin
+    option forwardfor
+    http-request set-header X-Forwarded-Port %[dst_port]
+    http-request add-header X-Forwarded-Proto https if { ssl_fc }
+    option httpchk HEAD / HTTP/1.1\r\nHost:localhost
+    server ubuntu 100.25.169.190:8080 check
+    server ubuntu 34.239.255.200:8080 check" >>/etc/haproxy/haproxy.cfg
