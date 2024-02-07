@@ -2,7 +2,7 @@
 #Install and configure HAproxy on your lb-01 server.
 
 sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install haproxy
+sudo apt-get install haproxy -y
 
 printf %s "
 frontend haproxynode
