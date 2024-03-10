@@ -11,8 +11,8 @@ printf %s "frontend http_front
 
 backend http_back
    balance roundrobin
-   server server1  34.227.93.198:80 check
-   server server2 54.166.169.232:80 check" >>/etc/haproxy/haproxy.cfg
+   server 414302-web-01 34.227.93.198:80 check
+   server 414302-web-02	54.166.169.232:80 check" >>/etc/haproxy/haproxy.cfg
 
 sudo systemctl start haproxy
 sudo systemctl enable haproxy
