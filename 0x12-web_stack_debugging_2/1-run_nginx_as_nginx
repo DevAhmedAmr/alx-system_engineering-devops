@@ -1,15 +1,26 @@
 #!/usr/bin/env bash
-# script to add a new user to be able to configure ngnix settings
-sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
+# Add nginx user if not already exists
+if ! id -u nginx &>/dev/null; then
+	sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx
+fi
+
+# Change ownership of Nginx directories to nginx user
 sudo chown -R nginx:nginx /var/log/nginx
 sudo chown -R nginx:nginx /var/lib/nginx
 
+# Check if Nginx configuration file exists
 nginx_config="/etc/nginx/nginx.conf"
 if [ ! -f "$nginx_config" ]; then
 	echo "Nginx configuration file not found: $nginx_config"
 	exit 1
 fi
+
+# Modify Nginx configuration to run as nginx user
 sudo sed -i 's/^user .*;/user nginx;/' "$nginx_config"
+
+# Modify Nginx configuration to listen on all active IPs on port 8080
 sudo sed -i '/listen[[:space:]]*80;/a \    listen 8080;' "$nginx_config"
+
+# Restart Nginx service
 sudo systemctl restart nginx
