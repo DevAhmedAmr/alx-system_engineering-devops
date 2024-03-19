@@ -1,28 +1,9 @@
 #!/usr/bin/env bash
 # Add nginx user if not already exists
-service nginx stop
-
-if ! id -u nginx &>/dev/null; then
-	sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx
-fi
-
-# Change ownership of Nginx directories to nginx user
-sudo chown -R nginx:nginx /var/log/nginx
-sudo chown -R nginx:nginx /var/lib/nginx
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+# replace port 80 with 8080 in the sites-available config
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+# give owner permissions to read and write to the config file
 chmod 644 /etc/nginx/nginx.conf
-
-# Check if Nginx configuration file exists
-nginx_config="/etc/nginx/nginx.conf"
-if [ ! -f "$nginx_config" ]; then
-	echo "Nginx configuration file not found: $nginx_config"
-	exit 1
-fi
-
-# Modify Nginx configuration to run as nginx user
-sudo sed -i 's/^user .*;/user nginx;/' "$nginx_config"
-
-# Modify Nginx configuration to listen on all active IPs on port 8080
-sudo sed -i '/listen[[:space:]]*80;/a \    listen 8080;' "$nginx_config"
-
 # Restart Nginx service
 sudo systemctl restart nginx
