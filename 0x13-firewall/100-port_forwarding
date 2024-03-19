@@ -12,6 +12,8 @@ sudo ufw allow OpenSSH
 # Allow SSH (port 22) from any source
 sudo ufw allow 22/tcp
 
+#allow
+sudo ufw allow 8080/tcp
 # Enable UFW firewall
 sudo ufw enable
 
