@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#  script should run the whoami command under the user passed as an argument
+
 current_user=$(whoami)
 
 if id -u "$1" >/dev/null 2>&1; then
