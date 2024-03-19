@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Add nginx user if not already exists
 if ! id -u nginx &>/dev/null; then
 	sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx
