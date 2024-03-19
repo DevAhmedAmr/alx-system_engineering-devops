@@ -7,6 +7,7 @@ fi
 # Change ownership of Nginx directories to nginx user
 sudo chown -R nginx:nginx /var/log/nginx
 sudo chown -R nginx:nginx /var/lib/nginx
+chmod 644 /etc/nginx/nginx.conf
 
 # Check if Nginx configuration file exists
 nginx_config="/etc/nginx/nginx.conf"
