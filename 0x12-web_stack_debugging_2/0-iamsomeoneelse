@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+current_user=$(whoami)
+
+if id -u "$1" >/dev/null 2>&1; then
+
+	sudo -u "$1" whoami
+	# su john -c 'whoami'
+
+	sudo su $current_user
+fi
