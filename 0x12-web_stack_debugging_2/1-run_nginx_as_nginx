@@ -1,1 +1,12 @@
 #!/usr/bin/env bash
+sudo adduser nginx
+sudo chown -R nginx:nginx /var/log/nginx
+sudo chown -R nginx:nginx /var/lib/nginx
+
+nginx_config="/etc/nginx/nginx.conf"
+if [ ! -f "$nginx_config" ]; then
+	echo "Nginx configuration file not found: $nginx_config"
+	exit 1
+fi
+sudo sed -i '1s/user www-data;/user nginx;/' "$nginx_config"
+sudo systemctl restart nginx
