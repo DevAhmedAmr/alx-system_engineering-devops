@@ -1,1 +1,5 @@
 #!/usr/bin/env bash
+sudo mysqldump -u root -p"$1" tyrell_corp >backup.sql
+current_date=$(date +"%d-%m-%Y")
+
+tar -czvf "$current_date.tar.gz" ./backup.sql
