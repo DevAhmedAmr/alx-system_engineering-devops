@@ -8,7 +8,7 @@ env.key_filename=r"C:\Users\ahmed\.ssh\pk3.pem"
 env.user="ubuntu"
 file_path="/etc/mysql/mysql.conf.d/mysqld.cnf"
 database_name="tyrell_corp"
-
+curr_path=r"S:\alx\alx-system_engineering-devops\0x14-mysql\sql"
 
 # sudo("ufw allow from 54.166.169.232 to any port 3306")
 
@@ -16,13 +16,24 @@ check_and_update_config_line("bind-address","# bind-address = 127.0.0.1",file_pa
 check_and_update_config_line("server-id","server-id = 1",file_path)
 check_and_update_config_line("log_bin","log_bin = /var/log/mysql/mysql-bin.log",file_path)
 check_and_update_config_line("binlog_do_db",f"binlog_do_db = {database_name}",file_path)
+
+# Restart MySQL service
 sudo("sudo systemctl restart mysql")
 
+# Flush tables with read lock
 sudo("echo 'FLUSH TABLES WITH READ LOCK;' | mysql -u root -p")
+
+# Show master status
 sudo("echo 'SHOW MASTER STATUS;' | mysql -u root -p")
+
+# Create a dump of the database
 sudo(f"mysqldump -u root -p {database_name} > {database_name}.sql")
+
+# Unlock tables
 sudo("echo 'UNLOCK TABLES;' | mysql -u root -p")
-get(f"./{database_name}.sql",r"S:\alx\alx-system_engineering-devops\0x14-mysql\sql")
+
+# Get the SQL dump file from the remote server to the local machine
+get(f"./{database_name}.sql",curr_path)
 
 
 
