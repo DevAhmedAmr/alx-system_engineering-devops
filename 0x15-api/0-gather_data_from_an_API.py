@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-"""
-place holder
-"""
+"""place holder"""
 
 import requests
 import sys
 import json
-"""
-place holder
-"""
+"""place holder"""
 def Gather_data():
 	"""_summary_
 	"""
