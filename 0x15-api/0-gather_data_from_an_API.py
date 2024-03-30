@@ -2,6 +2,7 @@
 import requests
 import sys
 import json
+"""doc"""
 id = sys.argv[1]
 
 r = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}')
