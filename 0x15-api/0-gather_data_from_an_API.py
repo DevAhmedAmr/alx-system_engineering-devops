@@ -10,6 +10,8 @@ import json
 place holder
 """
 def Gather_data():
+	"""_summary_
+	"""
 	id = sys.argv[1]
 
 	r = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}')
