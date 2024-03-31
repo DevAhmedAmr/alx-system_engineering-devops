@@ -58,5 +58,5 @@ def save_as_json(filename,dictionary:dict):
     dic=json.dumps(dictionary)
     with open(filename,"w") as file:
     	file.write(dic)
-
-Gather_data()
+if __name__ == "__main__":
+	Gather_data()
