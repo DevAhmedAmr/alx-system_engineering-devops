@@ -7,6 +7,7 @@ import sys
 
 """place holder"""
 
+
 def Gather_data():
     """get data from api"""
     id = sys.argv[1]
@@ -17,13 +18,15 @@ def Gather_data():
     EMPLOYEE_NAME = json.loads(r.text)["name"]
 
     r = requests.get(f"{url}/todos/?userId={id}")
+    userName = json.loads(requests.get(f"{url}/users/?id={str(id)}").text)[0]["username"]
+
     todo = json.loads(r.text)
 
 
     create_file_if_Not_Exist(fileName)
         
     for task in todo:
-        data = f""" "{task["userId"]}","{EMPLOYEE_NAME}","{task["completed"]}","{task["title"]}" """.strip()
+        data = f""" "{task["userId"]}","{userName}","{task["completed"]}","{task["title"]}" """.strip()
         save_csv(fileName,data)
         
             
