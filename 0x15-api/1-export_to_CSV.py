@@ -12,34 +12,36 @@ def Gather_data():
     """get data from api"""
     id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com"
-    fileName=f"{id}.csv"
+    fileName = f"{id}.csv"
 
     r = requests.get(f"{url}/users/{id}")
     EMPLOYEE_NAME = json.loads(r.text)["name"]
 
     r = requests.get(f"{url}/todos/?userId={id}")
-    userName = json.loads(requests.get(f"{url}/users/?id={str(id)}").text)[0]["username"]
+    userName = json.loads(requests.get(f"{url}/users/?id={str(id)}").text)[0][
+        "username"
+    ]
 
     todo = json.loads(r.text)
 
-
     create_file_if_Not_Exist(fileName)
-        
+
     for task in todo:
         data = f""" "{task["userId"]}","{userName}","{task["completed"]}","{task["title"]}" """.strip()
-        save_csv(fileName,data)
-        
-            
-    
+        save_csv(fileName, data)
+
+
 def create_file_if_Not_Exist(file_Name):
     try:
-        open(f"./{file_Name}", 'x')
+        open(f"./{file_Name}", "x")
     except FileExistsError:
-        pass        
-    
-def save_csv(file_name,data):
-        with open(f"./{file_name}","a") as file:
-            file.write(data+"\n")
-    
+        pass
+
+
+def save_csv(file_name, data):
+    with open(f"./{file_name}", "a") as file:
+        file.write(data + "\n")
+
+
 if __name__ == "__main__":
     Gather_data()
