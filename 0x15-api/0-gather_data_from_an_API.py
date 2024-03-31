@@ -36,8 +36,8 @@ def Gather_data():
 
     for task in todo:
         if task["completed"] is True:
-            print("\n", "\t ", task["title"])
-    #print('\n'.join('\t {}'.format(task)))
+            # print("\n", "\t ", task["title"])
+            print("\n".join("\t {}".format(task)))
 
 
 if __name__ == "__main__":
