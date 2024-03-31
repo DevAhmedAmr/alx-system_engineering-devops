@@ -33,11 +33,9 @@ def Gather_data():
             EMPLOYEE_NAME, TOTAL_NUMBER_OF_TASKS, NUMBER_OF_DONE_TASKS
         )
     )
-
     for task in todo:
         if task["completed"] is True:
-            # print("\n", "\t ", task["title"])
-            print("\n".join("\t {}".format(task)))
+            print("\t ", task["title"])
 
 
 if __name__ == "__main__":
