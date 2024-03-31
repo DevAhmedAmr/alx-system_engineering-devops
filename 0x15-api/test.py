@@ -11,24 +11,26 @@ todos_url = "https://jsonplaceholder.typicode.com/todos"
 
 
 def first_line(id):
-    """ Fetch user name """
+    """ Fetch number of tasks """
 
-    resp = requests.get(users_url).json()
+    todos_count = 0
+    todos_done = 0
 
-    name = None
+    resp = requests.get(todos_url).json()
     for i in resp:
-        if i['id'] == id:
-            name = i['name']
+        if i['userId'] == id:
+            todos_count += 1
+        if (i['completed'] and i['userId'] == id):
+            todos_done += 1
 
     filename = 'student_output'
-
     with open(filename, 'r') as f:
         first = f.readline().strip()
-
-    if name in first:
-        print("Employee Name: OK")
+        
+    if "{}/{}".format(todos_done, todos_count) in first:
+        print("To Do Count: OK")
     else:
-        print("Employee Name: Incorrect")
+        print("To Do Count: Incorrect")
 
 
 if __name__ == "__main__":
