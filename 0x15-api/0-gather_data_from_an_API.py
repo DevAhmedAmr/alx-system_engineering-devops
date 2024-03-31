@@ -28,12 +28,15 @@ def Gather_data():
             if task["completed"] is True:
                 NUMBER_OF_DONE_TASKS += 1
 
-    print(f"Employee {EMPLOYEE_NAME} is done with tasks", end="")
-    print(f"({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
+    print(
+        "Employee {} is done with tasks ({}/{}):".format(
+            EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS
+        )
+    )
 
     for task in todo:
         if task["completed"] is True:
-            print(" ", "\t", task["title"])
+            print("\t", task["title"])
 
 
 if __name__ == "__main__":
