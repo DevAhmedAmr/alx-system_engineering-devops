@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """place holder"""
 
+import json
 import requests
 import sys
-import json
 
 """place holder"""
 
 
 def Gather_data():
-    """_summary_"""
+    """get data from api"""
     id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com"
 
