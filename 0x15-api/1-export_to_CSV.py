@@ -6,12 +6,12 @@ import requests
 import sys
 
 """place holder"""
-fileName="USER_ID.csv"
 
 def Gather_data():
     """get data from api"""
     id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com"
+    fileName=f"{id}.csv"
 
     r = requests.get(f"{url}/users/{id}")
     EMPLOYEE_NAME = json.loads(r.text)["name"]
