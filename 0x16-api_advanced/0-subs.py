@@ -2,11 +2,12 @@
 
 """dependencies"""
 import json
-import requests
 import sys
 
 
 def number_of_subscribers(subreddit):
+    import requests
+
     """function to return number of subscriber of a subreddit"""
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     user_agent = {"User-Agent": "My-User-Agent"}
