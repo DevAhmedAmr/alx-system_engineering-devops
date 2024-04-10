@@ -14,7 +14,6 @@ def number_of_subscribers(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     r = requests.get(
         url,
-        headers=user_agent,
     )
 
     # print(json.dumps(r))
