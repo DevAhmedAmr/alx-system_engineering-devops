@@ -6,17 +6,19 @@ import sys
 
 
 def number_of_subscribers(subreddit):
+    """Queries the Reddit API and returns the number of subscribers
+    to the subreddit"""
     import requests
 
-    """function to return number of subscriber of a subreddit"""
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    user_agent = {"User-Agent": "My-User-Agent"}
-    r = requests.get(url, headers=user_agent, allow_redirects=False)
-
-    # print(json.dumps(r))
-    if r.status_code >= 300:
+    sub_info = requests.get(
+        "https://www.reddit.com/r/{}/about.json".format(subreddit),
+        headers={"User-Agent": "My-User-Agent"},
+        allow_redirects=False,
+    )
+    if sub_info.status_code >= 300:
         return 0
-    return r.json().get("data").get("subscribers")
+
+    return sub_info.json().get("data").get("subscribers")
 
 
 if __name__ == "__main__":
